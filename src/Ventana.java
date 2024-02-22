@@ -8,22 +8,94 @@ public class Ventana extends JFrame {
 	
 	JPanel panel = new JPanel();
 	JPanel panel2 = new JPanel();
+	JPanel panel3 = new JPanel();
 	
 	public Ventana()
 	{
 		
 		this.setSize(1000,800);
 		this.setLayout(null);
-		this.agregarElementos();
-		this.agregarRegistro();
-		this.add(panel);
-		this.add(panel2);
+		
+		//this.agregarElementos();
+		//this.agregarRegistro();
+		
+		this.admin();	
 		this.setVisible(true);
 	
 	}
 	
-	
-	
+	public void admin(){
+		
+		panel3.setBounds(0,0,1000,800);
+		panel3.setLayout(null);
+		panel3.setBackground(Color.green);
+		
+		JMenuBar barMain = new JMenuBar();
+		JMenu menuFile = new JMenu("Archivo");
+		JMenuItem openItem = new JMenuItem("abrir archivo...");
+		JMenuItem createItem = new JMenuItem("crear archivo...");
+		barMain.add(menuFile);
+		menuFile.add(createItem);
+		menuFile.add(openItem);
+		this.setJMenuBar(barMain);
+		
+		JLabel lblUsuarios = new JLabel("USUARIOS");
+		Font fontIngresar = new Font(Font.MONOSPACED,Font.ITALIC,40);
+		lblUsuarios.setFont(fontIngresar);
+		lblUsuarios.setBounds(350,20,300,50);
+		panel3.add(lblUsuarios);
+		
+		JLabel titleWitged = new JLabel("total de usuarios",0);
+		titleWitged.setBounds(40,100,300,100);
+		titleWitged.setFont(new Font(Font.MONOSPACED,Font.ITALIC,20));
+		titleWitged.setForeground(Color.white);
+		panel3.add(titleWitged);
+		
+		JLabel contendWitged = new JLabel("100",0);
+		contendWitged.setBounds(40,120,300,100);
+		contendWitged.setFont(new Font(Font.MONOSPACED,Font.ITALIC,20));
+		contendWitged.setForeground(Color.white);
+		panel3.add(contendWitged);
+		
+		JLabel witged = new JLabel("");
+		witged.setBounds(40,120,300,100);
+		witged.setOpaque(true);
+		witged.setBackground(Color.black);
+		panel3.add(witged);
+		
+
+		
+		JButton btnDonwload = new JButton("exportar");
+		btnDonwload.setBounds(440,140,100,50);
+		btnDonwload.setBackground(Color.red);
+		panel3.add(btnDonwload);
+		
+		JButton btnAdd= new JButton("anadir");
+		btnAdd.setBounds(580,140,100,50);
+		panel3.add(btnAdd);
+		
+		String titulos []= {"NO.contreol","Nombre","semestre","promedio","acciones"};
+		String elementos[][] = {
+				{"NO.contreol","Nombre","semestre","promedio","acciones"},
+				{"NO.contreol","Nombre","semestre","promedio","acciones"},
+				{"NO.contreol","Nombre","semestre","promedio","acciones"},
+				{"NO.contreol","Nombre","semestre","promedio","acciones"},
+				};
+		
+		
+		JTable tblMain = new JTable(elementos,titulos);
+		tblMain.setBounds(40,250,910,400);
+		
+		JScrollPane scrol = new JScrollPane(tblMain);
+		scrol.setBounds(40,250,100,50);
+		panel3.add(tblMain);
+		
+		
+		this.add(panel3);
+		
+		
+		
+	}
 	
 	
 	public void agregarRegistro()
@@ -136,6 +208,8 @@ public class Ventana extends JFrame {
 		btnAceptar.setBounds(150,620,100,50);
 		btnAceptar.setText("Crear");
 		panel2.add(btnAceptar);
+		
+		this.add(panel2);
 
 	}
 	
@@ -145,7 +219,7 @@ public class Ventana extends JFrame {
 	
 	public void agregarElementos()
 	{
-		panel.setBounds(0,0,500,600);
+		panel.setBounds(0,0,500,800);
 		panel.setLayout(null);
 		panel.setBackground(Color.red);
 		
@@ -198,6 +272,8 @@ public class Ventana extends JFrame {
 		panel.add(btnAceptar);
 		
 		
+		
+		this.add(panel);
 		
 	}
 
