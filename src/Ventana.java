@@ -2,6 +2,9 @@ import javax.swing.JFrame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics2D;
+
 import javax.swing.*;
 
 public class Ventana extends JFrame {
@@ -17,7 +20,8 @@ public class Ventana extends JFrame {
 		this.setSize(770,650);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("programacion3");
+		this.setTitle("User login");
+		this.setIconImage(new ImageIcon(getClass().getResource("icono.png")).getImage());
 		//this.agregarImagenes();
 		this.agregarElementos();
 		//this.agregarRegistro();
@@ -25,37 +29,43 @@ public class Ventana extends JFrame {
 		this.setVisible(true);
 	}
 	
+	
+	
+	
 	public void agregarElementos()
 	{
+		
+		
 		panelTrasero.setBounds(0,0,770,650);
 		panelTrasero.setLayout(null);
 		panelTrasero.setBackground(new Color(39,63,100));
 		
-		JLabel lblUsuario2 = new JLabel();
-		Font fontUsuario2 = new Font(Font.MONOSPACED,Font.ITALIC,15);
-		lblUsuario2.setFont(fontUsuario2);
-		lblUsuario2.setBounds(250,500,300,25);
-		lblUsuario2.setText("Dont have an Account?");
 		
-		lblUsuario2.setBackground(new Color(39,63,120));
-		lblUsuario2.setForeground(new Color(216,199,137));
+		
+		JLabel lblUsuario2 = new JLabel();
+		Font fontUsuario2 = new Font(Font.SANS_SERIF,Font.ITALIC,15);
+		lblUsuario2.setFont(fontUsuario2);
+		lblUsuario2.setBounds(290,500,300,25);
+		lblUsuario2.setText("Dont have an Account?");
+		lblUsuario2.setBackground(new Color(0,0,0,1));
+		lblUsuario2.setForeground(new Color(255,255,255));
 		panelTrasero.add(lblUsuario2);
 		
 
 		JLabel lblIngresar2 = new JLabel();
-		Font fontIngresar2 = new Font(Font.SANS_SERIF,Font.LAYOUT_RIGHT_TO_LEFT,40);
+		Font fontIngresar2 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
 		lblIngresar2.setFont(fontIngresar2);
-		lblIngresar2.setBounds(200,20,300,50);
+		lblIngresar2.setBounds(210,20,300,50);
 		lblIngresar2.setText("User Login");
 		lblIngresar2.setOpaque(true);
 		lblIngresar2.setHorizontalAlignment(0);
-		lblIngresar2.setBackground(new Color(39,63,100));
+		lblIngresar2.setBackground(new Color(0,0,0,1));
 		lblIngresar2.setForeground(new Color(255,255,255));
 		panelTrasero.add(lblIngresar2);
 		
 		JLabel lblImagen3 = new JLabel();
 		lblImagen3.setIcon(new ImageIcon(getClass().getResource("boton2.png")));
-		lblImagen3.setBounds(70,545,32,32);
+		lblImagen3.setBounds(330,530,100,32);
 		panelTrasero.add(lblImagen3);
 		
 		
@@ -64,14 +74,15 @@ public class Ventana extends JFrame {
 		panel.setLayout(null);
 		panel.setBackground(new Color(39,63,120));
 		
+		
 		JLabel lblIngresar = new JLabel();
-		Font fontIngresar = new Font(Font.SANS_SERIF,Font.LAYOUT_RIGHT_TO_LEFT,50);
+		Font fontIngresar = new Font(Font.SANS_SERIF,Font.ITALIC,50);
 		lblIngresar.setFont(fontIngresar);
-		lblIngresar.setBounds(100,20,300,50);
+		lblIngresar.setBounds(120,20,300,70);
 		lblIngresar.setText("My Account");
 		lblIngresar.setOpaque(true);
 		lblIngresar.setHorizontalAlignment(0);
-		lblIngresar.setBackground(new Color(39,63,120));
+		lblIngresar.setBackground(new Color(0,0,0,1));
 		lblIngresar.setForeground(new Color(216,199,137));
 		panel.add(lblIngresar);
 		
@@ -80,48 +91,60 @@ public class Ventana extends JFrame {
 		
 		JLabel lblImagen = new JLabel();
 		lblImagen.setIcon(new ImageIcon(getClass().getResource("icono.png")));
-		lblImagen.setBounds(70,145,32,32);
+		lblImagen.setBounds(92,150,32,32);
 		panel.add(lblImagen);
 		
 		JLabel lblImagen2 = new JLabel();
 		lblImagen2.setIcon(new ImageIcon(getClass().getResource("icono2.png")));
-		lblImagen2.setBounds(70,245,32,32);
+		lblImagen2.setBounds(92,250,32,32);
 		panel.add(lblImagen2);
 
 		
 		JLabel lblUsuario = new JLabel();
-		Font fontUsuario = new Font(Font.MONOSPACED,Font.ITALIC,15);
+		Font fontUsuario = new Font(Font.SANS_SERIF,Font.ITALIC,15);
 		lblUsuario.setFont(fontUsuario);
-		lblUsuario.setBounds(100,120,300,25);
+		lblUsuario.setBounds(120,120,300,25);
 		lblUsuario.setText("Enter your Username");
 		lblUsuario.setOpaque(true);
-		lblUsuario.setBackground(new Color(39,63,120));
-		lblUsuario.setForeground(new Color(216,199,137));
+		lblUsuario.setBackground(new Color(0,0,0,1));
+		lblUsuario.setForeground(new Color(255,255,255));
 		panel.add(lblUsuario);
 		
 		JTextField txtUsuario = new JTextField();
-		txtUsuario.setBounds(100,150,300,25);
+		txtUsuario.setBounds(120,150,300,35);
 		panel.add(txtUsuario);
 		
 		JLabel lblContrasena = new JLabel();
-		Font fontContrasena = new Font(Font.MONOSPACED,Font.ITALIC,15);
+		Font fontContrasena = new Font(Font.SANS_SERIF,Font.ITALIC,15);
 		lblContrasena.setFont(fontContrasena);
-		lblContrasena.setBounds(100,220,300,25);
+		lblContrasena.setBounds(120,220,300,25);
 		lblContrasena.setText("Enter your Pasword");
 		lblContrasena.setOpaque(true);
-		lblContrasena.setBackground(new Color(39,63,120));
-		lblContrasena.setForeground(new Color(216,199,137));
+		lblContrasena.setBackground(new Color(0,0,0,1));
+		lblContrasena.setForeground(new Color(255,255,255));
 		panel.add(lblContrasena);
 		
-		JPasswordField pwUsuario = new JPasswordField();
-		pwUsuario.setBounds(100,250,300,25);
+		JTextField pwUsuario = new JTextField();
+		pwUsuario.setBounds(120,250,300,35);
+		pwUsuario.setText("  PASWORD");
+		pwUsuario.setForeground(new Color(100,100,100,100));
 		panel.add(pwUsuario);
 		
 		
 		JLabel btnAceptar = new JLabel();
 		btnAceptar.setIcon(new ImageIcon(getClass().getResource("botonsito.png")));
-		btnAceptar.setBounds(170,320,200,50);
+		btnAceptar.setBounds(200,320,200,50);
 		panel.add(btnAceptar);
+		
+		JLabel fondo = new JLabel();
+		fondo.setIcon(new ImageIcon(getClass().getResource("fondo.png")));
+		fondo.setBounds(0,0,770,650);
+		panelTrasero.add(fondo);
+		
+		JLabel fondo2 = new JLabel();
+		fondo2.setIcon(new ImageIcon(getClass().getResource("fondo.png")));
+		fondo2.setBounds(1,-250,548,648);
+		panel.add(fondo2);
 		
 		
 		
@@ -327,6 +350,7 @@ public class Ventana extends JFrame {
 		btnAceptar.setBounds(150,620,100,50);
 		btnAceptar.setText("Crear");
 		panel2.add(btnAceptar);
+		
 		
 		this.add(panel2);
 
