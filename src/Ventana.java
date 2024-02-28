@@ -1,9 +1,12 @@
 import javax.swing.JFrame;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 
 import javax.swing.*;
 
@@ -13,28 +16,82 @@ public class Ventana extends JFrame {
 	JPanel panel2 = new JPanel();
 	JPanel panel3 = new JPanel();
 	JPanel panel4 = new JPanel();
+	JPanel panel5 = new JPanel();
 	JPanel panelTrasero = new JPanel();
+	JPanel east = new JPanel();
+	JPanel weast = new JPanel();
+	JPanel centro = new JPanel();
 	
 	public Ventana()
 	{	
-		this.setSize(770,650);
+		this.setSize(500,650);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setTitle("User login");
+		
 		this.setIconImage(new ImageIcon(getClass().getResource("icono.png")).getImage());
 		//this.agregarImagenes();
-		this.agregarElementos();
+		//this.agregarElementos();
 		//this.agregarRegistro();
 		//this.admin();	
+		this.calculadora();
 		this.setVisible(true);
 	}
 	
-	
-	
+	public void calculadora()
+	{
+		this.setTitle("Calculadora");
+		panel5.setBounds(0,0,480,640);
+		panel5.setLayout(new BorderLayout());
+		panel5.setBackground(new Color(39,63,100));
+		
+		centro.setLayout(new GridLayout(4,3,5,5));
+		centro.setBackground(new Color(39,63,150));
+		panel5.add(centro,BorderLayout.CENTER);
+		
+		east.setLayout(new GridLayout(3,1));
+		east.setBackground(new Color(39,63,200));
+		panel5.add(east,BorderLayout.EAST);
+		
+		weast.setLayout(new GridLayout(3,1));
+		weast.setBackground(new Color(39,63,200));
+		panel5.add(weast,BorderLayout.WEST);
+		
+		JLabel txt = new JLabel("100",4);
+		txt.setOpaque(true);
+		txt.setBackground(Color.black);
+		txt.setForeground(Color.white);
+		Font txtFont = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt.setFont(txtFont);
+		panel5.add(txt, BorderLayout.NORTH);
+		
+		String btns[] = {"1","2","3","4","5","6","7","8","9","0",".","ola"};
+		String btns2[] = {"+","-","="};
+		String btns3[] = {"*","/","%"};
+		
+		for(int i = 0;i<12;i++)
+		{
+			JButton boton = new JButton(btns[i]);
+			centro.add(boton);
+			
+			if(i<3)
+			{
+				JButton botons = new JButton(btns2[i]);
+				east.add(botons);
+				
+				JButton botons2 = new JButton(btns3
+						[i]);
+				weast.add(botons2);
+			}
+		}
+		
+		
+		this.add(panel5);
+		
+	}
 	
 	public void agregarElementos()
 	{
-		
+		this.setTitle("User login");
 		
 		panelTrasero.setBounds(0,0,770,650);
 		panelTrasero.setLayout(null);
