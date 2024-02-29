@@ -17,14 +17,24 @@ public class Ventana extends JFrame {
 	JPanel panel3 = new JPanel();
 	JPanel panel4 = new JPanel();
 	JPanel panel5 = new JPanel();
+
 	JPanel panelTrasero = new JPanel();
+	
 	JPanel east = new JPanel();
 	JPanel weast = new JPanel();
 	JPanel centro = new JPanel();
+	JPanel sur = new JPanel();
+	
+	JPanel panel6 = new JPanel();
+	
+	JPanel centroSur = new JPanel();
+	JPanel centro2 = new JPanel();
+	JPanel centroNorte = new JPanel();
+	
 	
 	public Ventana()
 	{	
-		this.setSize(500,650);
+		this.setSize(700,700);
 		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -33,9 +43,123 @@ public class Ventana extends JFrame {
 		//this.agregarElementos();
 		//this.agregarRegistro();
 		//this.admin();	
-		this.calculadora();
+		//this.calculadora();
+		this.diseno();
 		this.setVisible(true);
 	}
+	
+	
+	
+	public void diseno()
+	{
+		this.setTitle("Calculando el interes");
+		panel6.setBounds(0,0,480,500);
+		panel6.setLayout(new BorderLayout());
+		panel6.setBackground(new Color(39,63,100));
+		
+		
+		centro.setLayout(new BorderLayout());
+		centro.setBackground(new Color(153,255,203));
+		panel6.add(centro,BorderLayout.CENTER);
+		
+		centroSur.setLayout(new GridLayout(1,1));
+		centroSur.setBackground(Color.white);
+		centro.add(centroSur,BorderLayout.SOUTH);
+		
+		centro2.setLayout(new GridLayout(1,1));
+		centro2.setBackground(Color.white);
+		centro.add(centro2,BorderLayout.CENTER);
+		
+		centroNorte.setLayout(new GridLayout(4,2));
+		centroNorte.setBackground(Color.green);
+		centro.add(centroNorte,BorderLayout.NORTH);
+		
+		east.setLayout(new GridLayout(1,1));
+		east.setBackground(new Color(39,63,200));
+		panel6.add(east,BorderLayout.EAST);
+		
+		weast.setLayout(new GridLayout(1,1));
+		weast.setBackground(new Color(39,63,200));
+		panel6.add(weast,BorderLayout.WEST);
+		
+		sur.setLayout(new GridLayout(1,1));
+		sur.setBackground(Color.white);
+		panel6.add(sur,BorderLayout.SOUTH);
+		
+		JLabel txt = new JLabel("In");
+		txt.setOpaque(true);
+		txt.setBackground(Color.white);
+		txt.setForeground(Color.white);
+		Font txtFont = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt.setFont(txtFont);
+		
+		JLabel txt2 = new JLabel("Interez");
+		txt2.setOpaque(true);
+		txt2.setBackground(Color.white);
+		txt2.setForeground(Color.green);
+		Font txtFont2 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt2.setFont(txtFont2);
+		panel6.add(txt2, BorderLayout.NORTH);
+		
+		
+		JLabel txt3 = new JLabel("In");
+		txt3.setOpaque(true);
+		txt3.setBackground(Color.white);
+		txt3.setForeground(Color.white);
+		Font txtFont3 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt3.setFont(txtFont3);
+		
+		JLabel txt4 = new JLabel("In");
+		txt4.setOpaque(true);
+		txt4.setBackground(Color.white);
+		txt4.setForeground(Color.white);
+		Font txtFont4 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt4.setFont(txtFont4);
+		
+		sur.add(txt4);
+		
+	
+		east.add(txt);
+		weast.add(txt3);
+		
+		JLabel txt5 = new JLabel("In");
+		txt5.setOpaque(true);
+		txt5.setBackground(Color.black);
+		txt5.setForeground(Color.white);
+		Font txtFont5 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt5.setFont(txtFont5);
+		centroSur.add(txt5);
+		
+		
+		
+		JLabel txt8 = new JLabel("Inahsdhgjas");
+		txt8.setOpaque(true);
+		txt8.setBackground(Color.red);
+		txt8.setForeground(Color.black);
+		Font txtFont8 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt8.setFont(txtFont8);
+		
+		centro2.add(txt8);
+
+		JLabel txt7 = new JLabel("Indyugasgda");
+		txt7.setOpaque(true);
+		txt7.setBackground(Color.BLUE); 
+		Font txtFont7 = new Font(Font.SANS_SERIF,Font.ITALIC,30);
+		txt7.setFont(txtFont7);
+		
+		centroNorte.add(txt7);
+		centroNorte.repaint();
+		
+		
+		
+		
+		this.add(panel6);
+		
+	}
+	
+	
+	
+	
 	
 	public void calculadora()
 	{
@@ -412,11 +536,4 @@ public class Ventana extends JFrame {
 		this.add(panel2);
 
 	}
-	
-	
-	
-	
-	
-	
-
 }
