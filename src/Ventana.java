@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,15 +14,17 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Ventana extends JFrame{
+public class Ventana extends JFrame implements MouseListener{
 	
 	public Ventana()
 	{
 		
-		this.setSize(700,700);
+		this.setSize(1000,700);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
+
+		addMouseListener(this);
 			
 	}
 	
@@ -31,86 +35,145 @@ public class Ventana extends JFrame{
 		
 		Graphics g2d = (Graphics2D) g;
 		
-		g2d.setColor(Color.BLUE);
-		g2d.fillRect(0, 0, 700, 700);
-		
-		g2d.setColor(Color.GRAY);
-		g2d.fillRect(430, 160, 70, 100);
-		
-		g2d.setColor(Color.GRAY);
-		g2d.fillRect(420, 120, 90, 40);
+		g2d.setColor(Color.cyan);
+		g2d.fillRect(0,0,1000,700);
 		
 		g2d.setColor(Color.BLACK);
-		int x[] = {430,500,500};
-		int y[] = {160,160,190};
-		g2d.fillPolygon(new Polygon(x,y,3));
+		g2d.fillOval(85, 382, 130, 120);
+
+		g2d.fillOval(65, 432, 130, 120);
+	
+		g2d.fillOval(105, 442, 130, 120);
+
+	
+		g2d.setColor(Color.GREEN);
+		g2d.fillOval(100, 400, 100, 100);
 		
-		g2d.setColor(Color.orange);
-		g2d.fillRect(0, 400, 700, 100);
+		g2d.setColor(Color.GREEN);
+		g2d.fillOval(80, 440, 100, 100);
 		
-		for(int xi = 10;xi<700; xi+=60)
-		{
-		
-			g2d.setColor(Color.orange);
-			g2d.fillRect(xi,360, 50, 250);
-			
-			int x3[] = {xi,xi+25,xi+50};
-			int y3[] = {360,320,360};
-			g2d.fillPolygon(new Polygon(x3,y3,3));
-				
-		}
-		
-		g2d.setColor(Color.RED);
-		int x2[] = {150,290,590};
-		int y2[] = {300,110,300};
-		g2d.fillPolygon(new Polygon(x2,y2,3));
-		
-		
-		g2d.setColor(Color.yellow);
-		g2d.fillRect(190, 300, 350, 270);
-		
-		for(int yi = 335;yi<570; yi+=40)
-		{
-			g2d.setColor(Color.red);
-			g2d.drawLine(190, yi, 540, yi);
-			
-			g2d.setColor(Color.red);
-			g2d.drawLine(190, yi+1, 540, yi+1);
-			
-			g2d.setColor(Color.red);
-			g2d.drawLine(190+2, yi+2, 540, yi+2);
-				
-		}
-		
-		g2d.setColor(Color.gray);
-		g2d.fillRect(160, 570, 410, 40);
-		
-		g2d.setColor(Color.black);
-		g2d.fillRect(230, 320, 140, 250);
+		g2d.setColor(Color.GREEN);
+		g2d.fillOval(120, 450, 100, 100);
 		
 		g2d.setColor(Color.GRAY);
-		g2d.fillRect(240, 330, 120, 230);
+		g2d.fillRect(0, 500, 1000, 200);
 		
-		g2d.setColor(Color.PINK);
-		g2d.fillRoundRect(330,450,10,10,90,90);
 		
-		g2d.setColor(Color.red);
-		g2d.fillRect(410, 320, 100, 100);
+		/////////////////
 		
-		g2d.setColor(Color.white);
-		g2d.fillRect(420, 330, 80, 80);
 		
-		g2d.setColor(Color.red);
-		g2d.fillRect(450, 320, 10,90);
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(360, 300, 150, 200);
 		
-		g2d.setColor(Color.red);
-		g2d.fillRect(410, 360, 90,10);
+		g2d.setColor(Color.blue);
+		g2d.fillRect(370, 310, 130, 180);
+		
+		g2d.setColor(Color.BLACK);
+		g2d.fillRect(300, 400, 150, 100);
+		
+		g2d.setColor(Color.pink);
+		g2d.fillRect(310, 410, 130, 80);
+		
+		g2d.setColor(Color.yellow);
+		g2d.fillRect(70, 250, 60, 60);
+		
+		g2d.setColor(Color.yellow);
+		g2d.fillRect(180, 120, 60, 60);
+		
+		g2d.setColor(Color.yellow);
+		g2d.fillRect(242, 120, 60, 60);
+		
+		g2d.setColor(Color.yellow);
+		g2d.fillRect(900, 190, 60, 60);
 		
 		g2d.setColor(Color.green);
-		g2d.fillRect(0, 600, 700, 300);
+		g2d.fillRect(700, 390, 80, 110);
+		
+		g2d.setColor(Color.green);
+		g2d.fillRect(680, 360, 120, 40);
+		
+		g2d.setColor(Color.green);
+		g2d.fillRect(850, 300, 200, 200);
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		int mario[][] ={
+				{0,0,0,0,0,1,1,1,1,1,0},
+				{0,0,0,0,1,2,2,2,1,1,0},
+				{0,0,0,1,2,2,1,1,1,1,0},
+				{0,0,1,2,2,1,1,1,1,1,1},
+				{0,0,1,2,2,1,1,1,1,1,1},
+				{0,0,1,2,2,3,3,3,3,1,0},
+				{0,0,1,2,3,3,3,1,3,1,0},
+				{0,0,1,2,3,3,3,1,3,1,0},
+				{0,0,1,2,3,3,3,3,3,3,0},
+				};
+		
+		for(int x = 0;x<9;x++)
+		{
+			for(int y = 0;y<9;y++)
+			{
+				switch(mario[y][x])
+				{
+				case 1:
+					g2d.setColor(Color.BLACK);
+					
+					g2d.fillRect(x*10+10,y*10+10, 10, 10);
+				break;
+				
+				case 2:
+					g2d.setColor(Color.green);
+					
+					g2d.fillRect(x*10+10,y*10+10, 10, 10);
+				break;
+				
+				case 3:
+					g2d.setColor(Color.yellow);
+					
+					g2d.fillRect(x*10+10,y*10+10, 10, 10);
+				break;
+				}
+				
+			}
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(e.getX()/10);
+		System.out.println(e.getY()/10);
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 
