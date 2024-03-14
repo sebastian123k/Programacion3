@@ -1,10 +1,12 @@
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-public class Ventana extends JFrame{
+public  class Ventana extends JFrame implements MouseListener{
 	
 	
 	public Ventana()
@@ -44,8 +46,14 @@ public class Ventana extends JFrame{
 				btnClick2.setBounds(x,y,s,h);
 				btnClick2.setBackground(new Color(((int) (Math.random() * 255) + 1),((int) (Math.random() * 255) + 1),((int) (Math.random() * 255) + 1)));
 				btnClick2.setOpaque(true);
-				
-				
+				btnClick2.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						String hola = JOptionPane.showInputDialog(btnClick2.getText());
+						
+					}});
 				
 				pnBotones.add(btnClick2);
 				pnBotones.repaint();
@@ -58,4 +66,43 @@ public class Ventana extends JFrame{
 
 
 
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(e.getX()/10);
+		System.out.println(e.getY()/10);
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
+
+
+
+
+
+
