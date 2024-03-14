@@ -8,6 +8,7 @@ import javax.swing.*;
 
 public  class Ventana extends JFrame implements MouseListener{
 	
+	JPanel pnBotones = new JPanel();
 	
 	public Ventana()
 	{
@@ -17,13 +18,15 @@ public  class Ventana extends JFrame implements MouseListener{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.addButtons();
+		addMouseListener(this);
+		
 
 			
 	}
 	
 	public void addButtons()
 	{
-		JPanel pnBotones = new JPanel();
+		
 		pnBotones.setBounds(0,0,1000,500);
 		pnBotones.setLayout(null);
 		pnBotones.setBackground(Color.white);
@@ -33,32 +36,6 @@ public  class Ventana extends JFrame implements MouseListener{
 		btnClick.setBackground(Color.red);
 		pnBotones.add(btnClick);
 		
-		btnClick.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int x = (int) (Math.random() * 1000) + 1;
-				int y =(int) (Math.random() * 580) + 1;
-				int s  = (int) (Math.random() * 200) + 1;
-				int h = (int) (Math.random() * 200) + 1;
-				
-				JButton btnClick2 = new JButton("presioname");
-				btnClick2.setBounds(x,y,s,h);
-				btnClick2.setBackground(new Color(((int) (Math.random() * 255) + 1),((int) (Math.random() * 255) + 1),((int) (Math.random() * 255) + 1)));
-				btnClick2.setOpaque(true);
-				btnClick2.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						
-						String hola = JOptionPane.showInputDialog(btnClick2.getText());
-						
-					}});
-				
-				pnBotones.add(btnClick2);
-				pnBotones.repaint();
-				
-			}});
 		
 		this.add(pnBotones);
 		
@@ -70,14 +47,27 @@ public  class Ventana extends JFrame implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println(e.getX()/10);
-		System.out.println(e.getY()/10);
+
+		int z = (int) (Math.random() * 200) + 1;
+		int h = (int) (Math.random() * 200) + 1;
+		JButton btn = new JButton("hola");
+		btn.setBounds(e.getX(),e.getY(),z,h);
+		btn.setOpaque(true);
+		btn.setBackground(new Color(((int) (Math.random() * 200) + 1),((int) (Math.random() * 200) + 1),((int) (Math.random() * 200) + 1)));
+		btn.setText(Integer.toString((int) Math.random() / 100 + 1));
+
+		
+		pnBotones.add(btn);
+		pnBotones.repaint();
+		System.out.println("holanda");
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
+		
+		
+		
+
 		
 	}
 
@@ -100,8 +90,6 @@ public  class Ventana extends JFrame implements MouseListener{
 	}
 
 }
-
-
 
 
 
