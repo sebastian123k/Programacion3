@@ -1,3 +1,4 @@
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -55,6 +56,16 @@ public  class Ventana extends JFrame implements MouseListener{
 		btn.setOpaque(true);
 		btn.setBackground(new Color(((int) (Math.random() * 200) + 1),((int) (Math.random() * 200) + 1),((int) (Math.random() * 200) + 1)));
 		btn.setText(Integer.toString((int) Math.random() / 100 + 1));
+		btn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				pnBotones.remove(btn);
+				pnBotones.revalidate();
+				pnBotones.repaint();
+				
+			}});
 
 		
 		pnBotones.add(btn);
