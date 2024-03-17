@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -36,6 +37,7 @@ public  class Ventana extends JFrame implements MouseListener, KeyListener{
 		
 		JButton btnClick = new JButton("holanda");
 		btnClick.setBounds(100,100,100,100);
+
 		btnClick.setBackground(Color.red);
 		pnBotones.add(btnClick);
 		
@@ -111,6 +113,15 @@ public  class Ventana extends JFrame implements MouseListener, KeyListener{
 			pnBotones.repaint();
 		}
 		
+		if(e.getKeyChar() == 87 || e.getKeyChar() == 119)
+		{
+			for(int i = 0; i < pnBotones.getComponents().length; i++)
+			{
+				pnBotones.getComponent(i).setSize(pnBotones.getComponent(i).getSize().width+20, pnBotones.getComponent(i).getSize().height+20);
+			}
+			
+			pnBotones.repaint();
+		}
 		System.out.println(e.getKeyCode());
 	}
 
