@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,130 +11,119 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 
-public  class Ventana extends JFrame implements MouseListener, KeyListener{
+
+public  class Ventana extends JFrame {
 	
 	JPanel pnBotones = new JPanel();
+	JPanel pnGato = new JPanel();
+	
+	////
+	boolean turno = false;
+	JButton btn[] = new JButton[9];
+	///
 	
 	public Ventana()
 	{
 		
-		this.setSize(1000,580);
+		this.setSize(580,580);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLayout(null);
-		this.addButtons();
-		addMouseListener(this);
-		addKeyListener(this);
 		
-
+		//this.addButtons();
+		//addMouseListener(this);
+		//addKeyListener(this);
+		this.addCatgame();
 			
 	}
-	
-	public void addButtons()
+	String letra = "X";
+	public void comprobarGanador()
 	{
-		
-		pnBotones.setBounds(0,0,1000,500);
-		pnBotones.setLayout(null);
-		pnBotones.setBackground(Color.white);
-		
-		JButton btnClick = new JButton("holanda");
-		btnClick.setBounds(100,100,100,100);
-
-		btnClick.setBackground(Color.red);
-		pnBotones.add(btnClick);
-		
-		
-		
-		this.add(pnBotones);
-		
+		winner();
+		letra = "O";
+		winner();
 	}
-
-
-
-
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-
-		int z = (int) (Math.random() * 200) + 1;
-		int h = (int) (Math.random() * 200) + 1;
-		JButton btn = new JButton("hola");
-		btn.setBounds(e.getX(),e.getY(),z,h);
-		btn.setOpaque(true);
-		btn.setBackground(new Color(((int) (Math.random() * 200) + 1),((int) (Math.random() * 200) + 1),((int) (Math.random() * 200) + 1)));
-		btn.setText(Integer.toString((int) Math.random() / 100 + 1));
-		
-		pnBotones.add(btn);
-		pnBotones.repaint();
-		
 	
-		System.out.println("holanda");
-	}
-
-
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		
-		
-		
-
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-
-		
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		
-		if(e.getKeyCode() == KeyEvent.VK_DELETE)
+	public void winner()
+	{
+		for(int i = 0;i<9;i+=3)
 		{
-			pnBotones.removeAll();
-			pnBotones.repaint();
-		}
-		
-		if(e.getKeyChar() == 87 || e.getKeyChar() == 119)
-		{
-			for(int i = 0; i < pnBotones.getComponents().length; i++)
+			if(btn[i].getText().equals(letra) && btn[i+1].getText().equals(letra) && btn[i+2].getText().equals(letra));
 			{
-				pnBotones.getComponent(i).setSize(pnBotones.getComponent(i).getSize().width+20, pnBotones.getComponent(i).getSize().height+20);
+				String tilin = JOptionPane.showInputDialog(this,"ganador "+ letra ,JOptionPane.QUESTION_MESSAGE);
 			}
 			
-			pnBotones.repaint();
-		}
-		System.out.println(e.getKeyCode());
+		
+		}	
 	}
+	
+	
+	public void addCatgame()
+	{
+		pnGato.setBounds(0,0,500,500);
+		pnGato.setLayout(new GridLayout(3,3));
+		pnGato.setBackground(Color.white);
+		
+		
+		for(int i = 0;i<9;i++)
+		{
+			btn[i] = new JButton(" ");
+			btn[i].setOpaque(true);
+			btn[i].setBackground(new Color(200,0,0));
+			btn[i].setForeground(Color.cyan);
+			btn[i].setFont(new Font(Font.SANS_SERIF,Font.BOLD,40));
+			btn[i].addActionListener(new ActionListener() {
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					JButton btnAux = ((JButton) e.getSource());
+					
+					if(btnAux.getText().equals(" ")) 
+					{
+						if(turno)
+						{
+							((JButton) e.getSource()).setText("O");
+							turno = !turno;
+							
+						}
+						else
+						{
+							((JButton) e.getSource()).setText("X");
+							turno = !turno;
+						}
+						
+						comprobarGanador();
+						
+					
+						
+					}
+				
+					
+				}});
+			
+			
+			pnGato.add(btn[i]);
+		}
+		
+
+		this.add(pnGato);
+		pnGato.revalidate();
+		pnGato.repaint();
+	
 		
 	}
+	
+
+
+
+
+
+
+
+
 
 }
-
 
 
 
