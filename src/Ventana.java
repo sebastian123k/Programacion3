@@ -36,9 +36,11 @@ public  class Ventana extends JFrame {
 		this.addCatgame();
 			
 	}
+	
 	String letra = "X";
 	public void comprobarGanador()
 	{
+		letra = "X";
 		winner();
 		letra = "O";
 		winner();
@@ -48,17 +50,34 @@ public  class Ventana extends JFrame {
 	{
 		for(int i = 0;i<9;i+=3)
 		{
-			if(btn[i].getText().equals(letra) && btn[i+1].getText().equals(letra) && btn[i+2].getText().equals(letra));
+			if(btn[i].getText().equals(letra) && btn[i+1].getText().equals(letra) && btn[i+2].getText().equals(letra))
 			{
-				String tilin = JOptionPane.showInputDialog(this,"ganador "+ letra ,JOptionPane.QUESTION_MESSAGE);
+				String tilin = JOptionPane.showInputDialog(this,"el ganador es "+ letra ,JOptionPane.QUESTION_MESSAGE);
 			}
-			
-		
 		}	
+		
+		for(int i=0;i<3;i++)
+		{
+			if(btn[i].getText().equals(letra) && btn[i+3].getText().equals(letra) && btn[i+6].getText().equals(letra))
+			{
+				String tilin = JOptionPane.showInputDialog(this,"el ganador es "+ letra ,JOptionPane.QUESTION_MESSAGE);
+			}
+		}
+		
+		if(btn[0].getText().equals(letra) && btn[4].getText().equals(letra) && btn[8].getText().equals(letra))
+		{
+			String tilin = JOptionPane.showInputDialog(this,"el ganador es "+ letra ,JOptionPane.QUESTION_MESSAGE);
+		}
+		
+		if(btn[2].getText().equals(letra) && btn[4].getText().equals(letra) && btn[6].getText().equals(letra))
+		{
+			String tilin = JOptionPane.showInputDialog(this,"el ganador es "+ letra ,JOptionPane.QUESTION_MESSAGE);
+		}
 	}
 	
 	
 	public void addCatgame()
+
 	{
 		pnGato.setBounds(0,0,500,500);
 		pnGato.setLayout(new GridLayout(3,3));
@@ -95,8 +114,6 @@ public  class Ventana extends JFrame {
 						
 						comprobarGanador();
 						
-					
-						
 					}
 				
 					
@@ -124,6 +141,8 @@ public  class Ventana extends JFrame {
 
 
 }
+
+
 
 
 
